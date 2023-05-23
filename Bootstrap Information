@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    <script type="text/javascript"
+		src=
+    "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js">
+	</script>
+	<script type="text/javascript"
+		src=
+    "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-cookies.js">
+	</script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    
+      <nav class="navbar navbar-expand-sm bg-light">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="https://627c2aa33c6f4d92992f7d20e6631dec.vfs.cloud9.us-west-2.amazonaws.com/_static/bootstraplogin.html">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://627c2aa33c6f4d92992f7d20e6631dec.vfs.cloud9.us-west-2.amazonaws.com/_static/bootstrapsetting.html">Account</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://627c2aa33c6f4d92992f7d20e6631dec.vfs.cloud9.us-west-2.amazonaws.com/_static/bootstrapdisplay.html">User Information</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://627c2aa33c6f4d92992f7d20e6631dec.vfs.cloud9.us-west-2.amazonaws.com/_static/bootstrapinfo.html">Information</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    </head>
+    <body id="body">
+        
+        <h3 class = "text-center">Information
+        </h3>
+            
+        <div>
+        <p id="myDiv"></p>
+        
+            
+        </div>
+
+        <script>
+            var text = '{"user":[' +
+            '{"name":"Johnson","email":"johnson123@gmail.com","phone":"123-456-7892"},' +
+            '{"name":"Harry","email":"harry@gmail.com","phone":"612-222-4212"},' +
+            '{"name":"Kim","email":"kim@gmail.com","phone":"962-234-2136"},' +
+            '{"name":"Ross","email":"ross@gmail.com","phone":"567-345-2346"},' +
+            '{"name":"Bob","email":"bob346@gmail.com","phone":"325-234-7091" }]}';
+            
+            var data = JSON.parse(text);
+            
+            
+            //document.getElementById("myDiv").innerHTML = obj.employees[0].firstName + " " + obj.employees[0].lastName; //ok
+
+            var outputDiv = document.getElementById("myDiv");
+            data.user.forEach(function(element){
+                         console.log(element);
+                         })
+            
+            data.user.forEach(function(name)
+                                   {
+                                   //document.getElementById("myOtherDiv").innerHTML += item.firstName + " " + item.lastName + "  ";
+                                   var dynamicDiv = document.createElement("div");//make a new div, dynamically
+                                   dynamicDiv.classList.add("container");
+                                   dynamicDiv.classList.add("card");
+                                   dynamicDiv.classList.add("card-body");
+                                   //put a p in the div
+                                   var newp = document.createElement("p");
+                                   var newPMessage = "Name: " + name.name + " Email: " + name.email + " Phone:  " + name.phone; //what's your message?
+                                   var nodeToPaint = document.createTextNode(newPMessage);//encode your message in a text node, for printing
+                                   newp.appendChild(nodeToPaint);//put the new text element in the new paragraph
+                                   
+                                   //var grabThis = document.getElementById(dynamicDiv);
+                                   dynamicDiv.appendChild(newp);//append the paragraph to the new div
+                                   
+                                   //attach the div to the body
+                                   var element = document.getElementById("body");
+                                   element.appendChild(dynamicDiv);
+                                 
+                                   });
+                                  
+                                  
+                                  
+                                  
+            </script>
+            
+            
+            
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>	          
+    </body>
+</html>
